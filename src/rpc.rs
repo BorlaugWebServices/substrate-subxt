@@ -28,7 +28,7 @@ use codec::{
 };
 use jsonrpsee::{
     client::Subscription,
-    core::common::{
+    common::{
         to_value as to_json_value,
         Params,
     },
@@ -96,7 +96,12 @@ where
     T: System,
 {
     pub async fn connect_ws(url: &str) -> Result<Self, Error> {
-        let raw_client = jsonrpsee::ws::ws_raw_client(&url).await?;
+        let transport = jsonrpsee::transport::ws::WsTransportClient::new(url)
+            .await
+            .unwrap();
+        let raw_client = jsonrpsee::raw::RawClient::new(transport);
+
+        // let raw_client = jsonrpsee::raw::RawClient::new(&url).await?;
         Ok(Rpc {
             client: raw_client.into(),
             marker: PhantomData,
@@ -347,19 +352,9 @@ impl<T: System + Balances + 'static> Rpc<T> {
                         }
                     }
                 }
-                TransactionStatus::Invalid => return Err("Extrinsic Invalid".into()),
                 TransactionStatus::Usurped(_) => return Err("Extrinsic Usurped".into()),
                 TransactionStatus::Dropped => return Err("Extrinsic Dropped".into()),
-                TransactionStatus::Retracted(_) => {
-                    return Err("Extrinsic Retracted".into())
-                }
-                // should have made it `InBlock` before either of these
-                TransactionStatus::Finalized(_) => {
-                    return Err("Extrinsic Finalized".into())
-                }
-                TransactionStatus::FinalityTimeout(_) => {
-                    return Err("Extrinsic FinalityTimeout".into())
-                }
+                TransactionStatus::Invalid => return Err("Extrinsic Invalid".into()),
             }
         }
         unreachable!()
@@ -376,7 +371,6 @@ pub struct ExtrinsicSuccess<T: System> {
     /// Raw runtime events, can be decoded by the caller.
     pub events: Vec<RuntimeEvent<T>>,
 }
-
 impl<T: System> ExtrinsicSuccess<T> {
     /// Find the Event for the given module/variant, with raw encoded event data.
     /// Returns `None` if the Event is not found.

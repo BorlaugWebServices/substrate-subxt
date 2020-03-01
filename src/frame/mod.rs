@@ -18,9 +18,12 @@
 
 use codec::Encode;
 
+pub mod asset_registry;
 pub mod balances;
 pub mod contracts;
+pub mod identity;
 pub mod system;
+pub mod utils;
 
 /// Creates module calls
 pub struct Call<T: Encode> {

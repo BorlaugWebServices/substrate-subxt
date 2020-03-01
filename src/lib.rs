@@ -21,7 +21,6 @@
     bad_style,
     const_err,
     improper_ctypes,
-    missing_docs,
     non_shorthand_field_patterns,
     no_mangle_generic_items,
     overflowing_literals,
@@ -484,21 +483,15 @@ impl codec::Encode for Encoded {
 
 #[cfg(test)]
 mod tests {
-    use codec::Encode;
-    use frame_support::StorageMap;
-    use sp_core::storage::StorageKey;
+
     use sp_keyring::AccountKeyring;
 
     use super::*;
     use crate::{
-        frame::balances::Balances,
+        frame::balances::BalancesStore,
         DefaultNodeRuntime as Runtime,
         Error,
     };
-
-    type AccountId = <Runtime as System>::AccountId;
-    type Address = <Runtime as System>::Address;
-    type Balance = <Runtime as Balances>::Balance;
 
     pub(crate) async fn test_client() -> Client<Runtime> {
         ClientBuilder::<Runtime>::new()
@@ -561,7 +554,7 @@ mod tests {
         let result: Result<_, Error> = async_std::task::block_on(async move {
             let account = AccountKeyring::Alice.to_account_id();
             let client = test_client().await;
-            let balance = client.account(account.into()).await?.data.free;
+            let balance = client.free_balance(account.into()).await?;
             Ok(balance)
         });
 
@@ -592,36 +585,5 @@ mod tests {
         });
 
         assert!(result.is_ok())
-    }
-
-    #[test]
-    #[ignore] // requires locally running substrate node
-    fn test_chain_read_metadata() {
-        let client = async_std::task::block_on(test_client());
-
-        let balances = client.metadata().module_with_calls("Balances").unwrap();
-        let dest = sp_keyring::AccountKeyring::Bob.to_account_id();
-        let address: Address = dest.clone().into();
-        let amount: Balance = 10_000;
-
-        let transfer = pallet_balances::Call::transfer(address.clone(), amount);
-        let call = node_runtime::Call::Balances(transfer);
-        let subxt_transfer = crate::frame::balances::transfer::<Runtime>(address, amount);
-        let call2 = balances.call("transfer", subxt_transfer.args).unwrap();
-        assert_eq!(call.encode().to_vec(), call2.0);
-
-        let account_key =
-            <frame_system::Account<node_runtime::Runtime>>::hashed_key_for(&dest);
-        let account_key_substrate = StorageKey(account_key);
-        let account_key_from_meta = client
-            .metadata()
-            .module("System")
-            .unwrap()
-            .storage("Account")
-            .unwrap()
-            .get_map::<AccountId, pallet_balances::AccountData<Balance>>()
-            .unwrap()
-            .key(dest.clone());
-        assert_eq!(account_key_substrate, account_key_from_meta);
     }
 }
