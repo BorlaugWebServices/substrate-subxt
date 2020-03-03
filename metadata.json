@@ -1,0 +1,1011 @@
+Metadata : {
+    modules: {
+        "Timestamp": ModuleMetadata { name: "Timestamp", storage: {
+                "Now": StorageMetadata { module_prefix: "Timestamp", storage_prefix: "Now", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("T::Moment"), default: [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                "DidUpdate": StorageMetadata {
+    module_prefix: "Timestamp", storage_prefix: "DidUpdate", modifier:
+    StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("bool"), default: [
+                        0
+                    ];
+                }
+            }
+        },
+        "Grandpa": ModuleMetadata {
+    name: "Grandpa", storage: {
+                "Authorities": StorageMetadata {
+            module_prefix: "GrandpaFinality", storage_prefix: "Authorities", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("AuthorityList"), default: [
+                        0
+                    ];
+                },
+                "NextForced": StorageMetadata {
+            module_prefix: "GrandpaFinality", storage_prefix: "NextForced", modifier: StorageEntryModifier: : Optional, ty: StorageEntryType: : Plain("T::BlockNumber"), default: [
+                        0
+                    ];
+                },
+                "State": StorageMetadata {
+            module_prefix: "GrandpaFinality", storage_prefix: "State", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("StoredState<T::BlockNumber>"), default: [
+                        0
+                    ];
+                },
+                "SetIdSession": StorageMetadata {
+            module_prefix: "GrandpaFinality", storage_prefix: "SetIdSession", modifier: StorageEntryModifier: : Optional, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_256, key: "SetId", value: "SessionIndex", is_linked: false;
+                    }, default: [
+                        0
+                    ];
+                },
+                "Stalled": StorageMetadata {
+            module_prefix: "GrandpaFinality", storage_prefix: "Stalled", modifier: StorageEntryModifier: : Optional, ty: StorageEntryType: : Plain("(T::BlockNumber, T::BlockNumber)"), default: [
+                        0
+                    ];
+                },
+                "CurrentSetId": StorageMetadata {
+            module_prefix: "GrandpaFinality", storage_prefix: "CurrentSetId", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("SetId"), default: [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                },
+                "PendingChange": StorageMetadata {
+            module_prefix: "GrandpaFinality", storage_prefix: "PendingChange", modifier: StorageEntryModifier: : Optional, ty: StorageEntryType: : Plain("StoredPendingChange<T::BlockNumber>"), default: [
+                        0
+                    ];
+                }
+            }
+        },
+        "TransactionPayment": ModuleMetadata {
+    name: "TransactionPayment", storage: {
+                "NextFeeMultiplier": StorageMetadata {
+            module_prefix: "Balances", storage_prefix: "NextFeeMultiplier", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("Multiplier"), default: [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                }
+            }
+        },
+        "Balances": ModuleMetadata {
+    name: "Balances", storage: {
+                "IsUpgraded": StorageMetadata {
+            module_prefix: "Balances", storage_prefix: "IsUpgraded", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("bool"), default: [
+                        0
+                    ];
+                },
+                "TotalIssuance": StorageMetadata {
+            module_prefix: "Balances", storage_prefix: "TotalIssuance", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("T::Balance"), default: [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                },
+                "Locks": StorageMetadata {
+            module_prefix: "Balances", storage_prefix: "Locks", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_256, key: "T::AccountId", value: "Vec<BalanceLock<T::Balance>>", is_linked: false;
+                    }, default: [
+                        0
+                    ];
+                },
+                "Account": StorageMetadata {
+            module_prefix: "Balances", storage_prefix: "Account", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_256, key: "T::AccountId", value: "AccountData<T::Balance>", is_linked: false;
+                    }, default: [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                }
+            }
+        },
+        "Sudo": ModuleMetadata {
+    name: "Sudo", storage: {
+                "Key": StorageMetadata {
+            module_prefix: "Sudo", storage_prefix: "Key", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("T::AccountId"), default: [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                }
+            }
+        },
+        "RandomnessCollectiveFlip": ModuleMetadata {
+    name: "RandomnessCollectiveFlip", storage: {
+                "RandomMaterial": StorageMetadata {
+            module_prefix: "RandomnessCollectiveFlip", storage_prefix: "RandomMaterial", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("Vec<T::Hash>"), default: [
+                        0
+                    ];
+                }
+            }
+        },
+        "Indices": ModuleMetadata {
+    name: "Indices", storage: {
+                "Accounts": StorageMetadata {
+            module_prefix: "Indices", storage_prefix: "Accounts", modifier: StorageEntryModifier: : Optional, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_128Concat, key: "T::AccountIndex", value: "(T::AccountId, BalanceOf<T>)", is_linked: false;
+                    }, default: [
+                        0
+                    ];
+                }
+            }
+        },
+        "GeneralCouncil": ModuleMetadata {
+    name: "GeneralCouncil", storage: {
+                "ProposalCount": StorageMetadata {
+            module_prefix: "Instance1Collective", storage_prefix: "ProposalCount", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("u32"), default: [
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                },
+                "Members": StorageMetadata {
+            module_prefix: "Instance1Collective", storage_prefix: "Members", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("Vec<T::AccountId>"), default: [
+                        0
+                    ];
+                },
+                "ProposalOf": StorageMetadata {
+            module_prefix: "Instance1Collective", storage_prefix: "ProposalOf", modifier: StorageEntryModifier: : Optional, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_256, key: "T::Hash", value: "<T as Trait<I>>::Proposal", is_linked: false;
+                    }, default: [
+                        0
+                    ];
+                },
+                "Proposals": StorageMetadata {
+            module_prefix: "Instance1Collective", storage_prefix: "Proposals", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("Vec<T::Hash>"), default: [
+                        0
+                    ];
+                },
+                "Voting": StorageMetadata {
+            module_prefix: "Instance1Collective", storage_prefix: "Voting", modifier: StorageEntryModifier: : Optional, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_256, key: "T::Hash", value: "Votes<T::AccountId>", is_linked: false;
+                    }, default: [
+                        0
+                    ];
+                }
+            }
+        },
+        "GeneralCouncilMembership": ModuleMetadata {
+    name: "GeneralCouncilMembership", storage: {
+                "Members": StorageMetadata {
+            module_prefix: "Instance1Membership", storage_prefix: "Members", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("Vec<T::AccountId>"), default: [
+                        0
+                    ];
+                }
+            }
+        },
+        "System": ModuleMetadata {
+    name: "System", storage: {
+                "AllExtrinsicsWeight": StorageMetadata {
+            module_prefix: "System", storage_prefix: "AllExtrinsicsWeight", modifier: StorageEntryModifier: : Optional, ty: StorageEntryType: : Plain("Weight"), default: [
+                        0
+                    ];
+                },
+                "BlockHash": StorageMetadata {
+            module_prefix: "System", storage_prefix: "BlockHash", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_256, key: "T::BlockNumber", value: "T::Hash", is_linked: false;
+                    }, default: [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                },
+                "Digest": StorageMetadata {
+            module_prefix: "System", storage_prefix: "Digest", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("DigestOf<T>"), default: [
+                        0
+                    ];
+                },
+                "EventTopics": StorageMetadata {
+            module_prefix: "System", storage_prefix: "EventTopics", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_256, key: "T::Hash", value: "Vec<(T::BlockNumber, EventIndex)>", is_linked: false;
+                    }, default: [
+                        0
+                    ];
+                },
+                "Events": StorageMetadata {
+            module_prefix: "System", storage_prefix: "Events", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("Vec<EventRecord<T::Event, T::Hash>>"), default: [
+                        0
+                    ];
+                },
+                "EventCount": StorageMetadata {
+            module_prefix: "System", storage_prefix: "EventCount", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("EventIndex"), default: [
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                },
+                "ExtrinsicCount": StorageMetadata {
+            module_prefix: "System", storage_prefix: "ExtrinsicCount", modifier: StorageEntryModifier: : Optional, ty: StorageEntryType: : Plain("u32"), default: [
+                        0
+                    ];
+                },
+                "ExtrinsicData": StorageMetadata {
+            module_prefix: "System", storage_prefix: "ExtrinsicData", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Twox64Concat, key: "u32", value: "Vec<u8>", is_linked: false;
+                    }, default: [
+                        0
+                    ];
+                },
+                "ParentHash": StorageMetadata {
+            module_prefix: "System", storage_prefix: "ParentHash", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("T::Hash"), default: [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                },
+                "ExtrinsicsRoot": StorageMetadata {
+            module_prefix: "System", storage_prefix: "ExtrinsicsRoot", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("T::Hash"), default: [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                },
+                "Number": StorageMetadata {
+            module_prefix: "System", storage_prefix: "Number", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("T::BlockNumber"), default: [
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                },
+                "Account": StorageMetadata {
+            module_prefix: "System", storage_prefix: "Account", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_256, key: "T::AccountId", value: "(T::Index, T::AccountData)", is_linked: false;
+                    }, default: [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                },
+                "AllExtrinsicsLen": StorageMetadata {
+            module_prefix: "System", storage_prefix: "AllExtrinsicsLen", modifier: StorageEntryModifier: : Optional, ty: StorageEntryType: : Plain("u32"), default: [
+                        0
+                    ];
+                }
+            }
+        },
+        "AssetRegistry": ModuleMetadata {
+    name: "AssetRegistry", storage: {
+                "Nonce": StorageMetadata {
+            module_prefix: "AssetRegistry", storage_prefix: "Nonce", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("u64"), default: [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                }
+            }
+        },
+        "Identity": ModuleMetadata {
+    name: "Identity", storage: {
+                "DidRegistry": StorageMetadata {
+            module_prefix: "Identity", storage_prefix: "DidRegistry", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_256, key: "T::AccountId", value: "Vec<Did>", is_linked: false;
+                    }, default: [
+                        0
+                    ];
+                },
+                "Nonce": StorageMetadata {
+            module_prefix: "Identity", storage_prefix: "Nonce", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("u64"), default: [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                },
+                "DidController": StorageMetadata {
+            module_prefix: "Identity", storage_prefix: "DidController", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_256, key: "T::AccountId", value: "Vec<Did>", is_linked: false;
+                    }, default: [
+                        0
+                    ];
+                },
+                "CatalogOwnership": StorageMetadata {
+            module_prefix: "Identity", storage_prefix: "CatalogOwnership", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_256, key: "Did", value: "Vec<T::CatalogId>", is_linked: false;
+                    }, default: [
+                        0
+                    ];
+                },
+                "ClaimCount": StorageMetadata {
+            module_prefix: "Identity", storage_prefix: "ClaimCount", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("ClaimIndex"), default: [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                },
+                "Claims": StorageMetadata {
+            module_prefix: "Identity", storage_prefix: "Claims", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : DoubleMap {
+                hasher: StorageHasher: : Blake2_256, key1: "Did", key2: "ClaimIndex", value: "Claim<ClaimIndex, T::Moment>", key2_hasher: StorageHasher: : Blake2_256;
+                    }, default: [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                },
+                "ClaimIssuers": StorageMetadata {
+            module_prefix: "Identity", storage_prefix: "ClaimIssuers", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_256, key: "Did", value: "Vec<Did>", is_linked: false;
+                    }, default: [
+                        0
+                    ];
+                },
+                "DidInfo": StorageMetadata {
+            module_prefix: "Identity", storage_prefix: "DidInfo", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_256, key: "Did", value: "DidDocument", is_linked: false;
+                    }, default: [
+                        0
+                    ];
+                },
+                "ClaimsOf": StorageMetadata {
+            module_prefix: "Identity", storage_prefix: "ClaimsOf", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_256, key: "Did", value: "Vec<ClaimIndex>", is_linked: false;
+                    }, default: [
+                        0
+                    ];
+                },
+                "ClaimConsumers": StorageMetadata {
+            module_prefix: "Identity", storage_prefix: "ClaimConsumers", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Map {
+                hasher: StorageHasher: : Blake2_256, key: "Did", value: "Vec<Did>", is_linked: false;
+                    }, default: [
+                        0
+                    ];
+                },
+                "NextCatalogId": StorageMetadata {
+            module_prefix: "Identity", storage_prefix: "NextCatalogId", modifier: StorageEntryModifier: : Default, ty: StorageEntryType: : Plain("T::CatalogId"), default: [
+                        0,
+                        0,
+                        0,
+                        0
+                    ];
+                },
+                "Catalogs": StorageMetadata {
+            module_prefix: "Identity", storage_prefix: "Catalogs", modifier: StorageEntryModifier: : Optional, ty: StorageEntryType: : DoubleMap {
+                hasher: StorageHasher: : Blake2_256, key1: "T::CatalogId", key2: "Did", value: "ShortName", key2_hasher: StorageHasher: : Blake2_256;
+                    }, default: [
+                        0
+                    ];
+                }
+            }
+        },
+        "Aura": ModuleMetadata {
+    name: "Aura", storage: {}
+        }
+    }, modules_with_calls: {
+        "RandomnessCollectiveFlip": ModuleWithCalls {
+        index: 6, calls: {}
+        },
+        "AssetRegistry": ModuleWithCalls {
+        index: 10, calls: {
+                "register_asset": 0;
+            }
+        },
+        "Grandpa": ModuleWithCalls {
+        index: 2, calls: {
+                "report_misbehavior": 0;
+            }
+        },
+        "Indices": ModuleWithCalls {
+        index: 3, calls: {
+                "force_transfer": 3,
+                "claim": 0,
+                "transfer": 1,
+                "free": 2;
+            }
+        },
+        "GeneralCouncilMembership": ModuleWithCalls {
+        index: 8, calls: {
+                "reset_members": 3,
+                "add_member": 0,
+                "change_key": 4,
+                "remove_member": 1,
+                "swap_member": 2;
+            }
+        },
+        "GeneralCouncil": ModuleWithCalls {
+        index: 7, calls: {
+                "propose": 2,
+                "execute": 1,
+                "vote": 3,
+                "set_members": 0;
+            }
+        },
+        "Balances": ModuleWithCalls {
+        index: 4, calls: {
+                "transfer": 0,
+                "set_balance": 1,
+                "force_transfer": 2,
+                "transfer_keep_alive": 3;
+            }
+        },
+        "Sudo": ModuleWithCalls {
+        index: 5, calls: {
+                "sudo": 0,
+                "set_key": 1,
+                "sudo_as": 2;
+            }
+        },
+        "System": ModuleWithCalls {
+        index: 0, calls: {
+                "kill_storage": 7,
+                "fill_block": 0,
+                "remark": 1,
+                "set_changes_trie_config": 5,
+                "set_heap_pages": 2,
+                "set_code": 3,
+                "set_code_without_checks": 4,
+                "set_storage": 6,
+                "kill_prefix": 8;
+            }
+        },
+        "Identity": ModuleWithCalls {
+        index: 9, calls: {
+                "replace_did": 3,
+                "register_did": 0,
+                "authorize_claim_consumers": 4,
+                "revoke_claim_issuers": 7,
+                "add_dids_to_catalog": 13,
+                "remove_catalog": 12,
+                "update_did_controllers": 15,
+                "register_did_for": 1,
+                "attest_claim": 9,
+                "create_catalog": 11,
+                "make_claim": 8,
+                "revoke_attestation": 10,
+                "authorize_claim_issuers": 6,
+                "update_did": 2,
+                "revoke_claim_consumers": 5,
+                "remove_dids_from_catalog": 14;
+            }
+        },
+        "Timestamp": ModuleWithCalls {
+        index: 1, calls: {
+                "set": 0;
+            }
+        }
+    }, modules_with_events: {
+        "GeneralCouncil": ModuleWithEvents {
+        index: 5, name: "GeneralCouncil", events: {
+                1: ModuleEventMetadata {
+                name: "Voted", arguments: [Primitive("AccountId"), Primitive("Hash"), Primitive("bool"), Primitive("MemberCount"), Primitive("MemberCount")
+                    ];
+                },
+                3: ModuleEventMetadata {
+                name: "Disapproved", arguments: [Primitive("Hash")
+                    ];
+                },
+                4: ModuleEventMetadata {
+                name: "Executed", arguments: [Primitive("Hash"), Primitive("bool")
+                    ];
+                },
+                0: ModuleEventMetadata {
+                name: "Proposed", arguments: [Primitive("AccountId"), Primitive("ProposalIndex"), Primitive("Hash"), Primitive("MemberCount")
+                    ];
+                },
+                2: ModuleEventMetadata {
+                name: "Approved", arguments: [Primitive("Hash")
+                    ];
+                },
+                5: ModuleEventMetadata {
+                name: "MemberExecuted", arguments: [Primitive("Hash"), Primitive("bool")
+                    ];
+                }
+            }
+        },
+        "AssetRegistry": ModuleWithEvents {
+        index: 8, name: "AssetRegistry", events: {
+                0: ModuleEventMetadata {
+                name: "CatalogCreated", arguments: [Primitive("Did"), Primitive("CatalogId")
+                    ];
+                }
+            }
+        },
+        "Identity": ModuleWithEvents {
+        index: 7, name: "Identity", events: {
+                1: ModuleEventMetadata {
+                name: "Registered", arguments: [Primitive("AccountId"), Primitive("AccountId"), Primitive("Did"), Primitive("Moment")
+                    ];
+                },
+                6: ModuleEventMetadata {
+                name: "ClaimIssuersAdded", arguments: [Primitive("Did"), Vec(Primitive("Did")), Primitive("Moment")
+                    ];
+                },
+                3: ModuleEventMetadata {
+                name: "DidReplaced", arguments: [Primitive("AccountId"),
+                Primitive("Did"), Primitive("Moment")
+                    ];
+                },
+                5: ModuleEventMetadata {
+                name: "ClaimConsumersRemoved", arguments: [Primitive("Did"), Vec(Primitive("Did")), Primitive("Moment")
+                    ];
+                },
+                14: ModuleEventMetadata {
+                name: "CatalogDidsRemoved", arguments: [Primitive("Did"), Primitive("CatalogId"), Primitive("Moment")
+                    ];
+                },
+                11: ModuleEventMetadata {
+                name: "CatalogCreated", arguments: [Primitive("Did"), Primitive("CatalogId"), Primitive("Moment")
+                    ];
+                },
+                9: ModuleEventMetadata {
+                name: "ClaimAttested", arguments: [Primitive("Did"), Primitive("ClaimIndex"), Primitive("Did"), Primitive("Moment")
+                    ];
+                },
+                10: ModuleEventMetadata {
+                name: "ClaimAttestationRevoked", arguments: [Primitive("Did"), Primitive("ClaimIndex"), Primitive("Did"), Primitive("Moment")
+                    ];
+                },
+                4: ModuleEventMetadata {
+                name: "ClaimConsumersAdded", arguments: [Primitive("Did"), Vec(Primitive("Did")), Primitive("Moment")
+                    ];
+                },
+                15: ModuleEventMetadata {
+                name: "DidControllersUpdated", arguments: [Primitive("Did"), Primitive("Moment")
+                    ];
+                },
+                0: ModuleEventMetadata {
+                name: "Test", arguments: [];
+                },
+                8: ModuleEventMetadata {
+                name: "ClaimMade", arguments: [Primitive("Did"), Primitive("ClaimIndex"), Primitive("Did"), Primitive("Moment")
+                    ];
+                },
+                12: ModuleEventMetadata {
+                name: "CatalogRemoved", arguments: [Primitive("Did"), Primitive("CatalogId"), Primitive("Moment")
+                    ];
+                },
+                2: ModuleEventMetadata {
+                name: "DidUpdated", arguments: [Primitive("AccountId"), Primitive("Did"), Primitive("Moment")
+                    ];
+                },
+                13: ModuleEventMetadata {
+                name: "CatalogDidsAdded", arguments: [Primitive("Did"), Primitive("CatalogId"), Primitive("Moment")
+                    ];
+                },
+                7: ModuleEventMetadata {
+                name: "ClaimIssuersRemoved", arguments: [Primitive("Did"), Vec(Primitive("Did")), Primitive("Moment")
+                    ];
+                }
+            }
+        },
+        "Grandpa": ModuleWithEvents {
+        index: 1, name: "Grandpa", events: {
+                1: ModuleEventMetadata {
+                name: "Paused", arguments: [];
+                },
+                2: ModuleEventMetadata {
+                name: "Resumed", arguments: [];
+                },
+                0: ModuleEventMetadata {
+                name: "NewAuthorities", arguments: [Primitive("AuthorityList")
+                    ];
+                }
+            }
+        },
+        "Sudo": ModuleWithEvents {
+        index: 4, name: "Sudo", events: {
+                1: ModuleEventMetadata {
+                name: "KeyChanged", arguments: [Primitive("AccountId")
+                    ];
+                },
+                2: ModuleEventMetadata {
+                name: "SudoAsDone", arguments: [Primitive("bool")
+                    ];
+                },
+                0: ModuleEventMetadata {
+                name: "Sudid", arguments: [Primitive("bool")
+                    ];
+                }
+            }
+        },
+        "System": ModuleWithEvents {
+        index: 0, name: "System", events: {
+                4: ModuleEventMetadata {
+                name: "ReapedAccount", arguments: [Primitive("AccountId")
+                    ];
+                },
+                0: ModuleEventMetadata {
+                name: "ExtrinsicSuccess", arguments: [Primitive("DispatchInfo")
+                    ];
+                },
+                2: ModuleEventMetadata {
+                name: "CodeUpdated", arguments: [];
+                },
+                1: ModuleEventMetadata {
+                name: "ExtrinsicFailed", arguments: [Primitive("DispatchError"), Primitive("DispatchInfo")
+                    ];
+                },
+                3: ModuleEventMetadata {
+                name: "NewAccount", arguments: [Primitive("AccountId")
+                    ];
+                }
+            }
+        },
+        "Indices": ModuleWithEvents {
+        index: 2, name: "Indices", events: {
+                0: ModuleEventMetadata {
+                name: "IndexAssigned", arguments: [Primitive("AccountId"), Primitive("AccountIndex")
+                    ];
+                },
+                1: ModuleEventMetadata {
+                name: "IndexFreed", arguments: [Primitive("AccountIndex")
+                    ];
+                }
+            }
+        },
+        "GeneralCouncilMembership": ModuleWithEvents {
+        index: 6, name: "GeneralCouncilMembership", events: {
+                3: ModuleEventMetadata {
+                name: "MembersReset", arguments: [];
+                },
+                0: ModuleEventMetadata {
+                name: "MemberAdded", arguments: [];
+                },
+                1: ModuleEventMetadata {
+                name: "MemberRemoved", arguments: [];
+                },
+                4: ModuleEventMetadata {
+                name: "KeyChanged", arguments: [];
+                },
+                5: ModuleEventMetadata {
+                name: "Dummy", arguments: [Primitive("sp_std::marker::PhantomData<(AccountId, Event)>")
+                    ];
+                },
+                2: ModuleEventMetadata {
+                name: "MembersSwapped", arguments: [];
+                }
+            }
+        },
+        "Balances": ModuleWithEvents {
+        index: 3, name: "Balances", events: {
+                1: ModuleEventMetadata {
+                name: "DustLost", arguments: [Primitive("AccountId"), Primitive("Balance")
+                    ];
+                },
+                2: ModuleEventMetadata {
+                name: "Transfer", arguments: [Primitive("AccountId"), Primitive("AccountId"), Primitive("Balance")
+                    ];
+                },
+                3: ModuleEventMetadata {
+                name: "BalanceSet", arguments: [Primitive("AccountId"), Primitive("Balance"), Primitive("Balance")
+                    ];
+                },
+                0: ModuleEventMetadata {
+                name: "Endowed", arguments: [Primitive("AccountId"), Primitive("Balance")
+                    ];
+                },
+                4: ModuleEventMetadata {
+                name: "Deposit", arguments: [Primitive("AccountId"), Primitive("Balance")
+                    ];
+                }
+            }
+        }
+    }
+}

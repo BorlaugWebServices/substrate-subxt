@@ -133,6 +133,7 @@ impl<T: System, S> ClientBuilder<T, S> {
     /// Creates a new Client.
     pub async fn build(self) -> Result<Client<T, S>, Error> {
         let url = self.url.unwrap_or("ws://127.0.0.1:9944".to_string());
+        // .unwrap_or("wss://node1.borlaug.network:9944".to_string());
         let rpc = Rpc::connect_ws(&url).await?;
 
         let (metadata, genesis_hash, runtime_version) = future::join3(
@@ -312,7 +313,6 @@ impl<T: System + Balances + Sync + Send + 'static, S: 'static> Client<T, S> {
             Some(nonce) => nonce,
             None => self.account(account_id).await?.nonce,
         };
-
         let genesis_hash = self.genesis_hash;
         let runtime_version = self.runtime_version.clone();
         Ok(XtBuilder {
@@ -483,15 +483,21 @@ impl codec::Encode for Encoded {
 
 #[cfg(test)]
 mod tests {
-
+    use codec::Encode;
+    use frame_support::StorageMap;
+    use sp_core::storage::StorageKey;
     use sp_keyring::AccountKeyring;
 
     use super::*;
     use crate::{
-        frame::balances::BalancesStore,
+        frame::balances::Balances,
         DefaultNodeRuntime as Runtime,
         Error,
     };
+
+    type AccountId = <Runtime as System>::AccountId;
+    type Address = <Runtime as System>::Address;
+    type Balance = <Runtime as Balances>::Balance;
 
     pub(crate) async fn test_client() -> Client<Runtime> {
         ClientBuilder::<Runtime>::new()
@@ -554,7 +560,7 @@ mod tests {
         let result: Result<_, Error> = async_std::task::block_on(async move {
             let account = AccountKeyring::Alice.to_account_id();
             let client = test_client().await;
-            let balance = client.free_balance(account.into()).await?;
+            let balance = client.account(account.into()).await?.data.free;
             Ok(balance)
         });
 
@@ -585,5 +591,36 @@ mod tests {
         });
 
         assert!(result.is_ok())
+    }
+
+    #[test]
+    #[ignore] // requires locally running substrate node
+    fn test_chain_read_metadata() {
+        let client = async_std::task::block_on(test_client());
+
+        let balances = client.metadata().module_with_calls("Balances").unwrap();
+        let dest = sp_keyring::AccountKeyring::Bob.to_account_id();
+        let address: Address = dest.clone().into();
+        let amount: Balance = 10_000;
+
+        let transfer = pallet_balances::Call::transfer(address.clone(), amount);
+        let call = node_runtime::Call::Balances(transfer);
+        let subxt_transfer = crate::frame::balances::transfer::<Runtime>(address, amount);
+        let call2 = balances.call("transfer", subxt_transfer.args).unwrap();
+        assert_eq!(call.encode().to_vec(), call2.0);
+
+        let account_key =
+            <frame_system::Account<node_runtime::Runtime>>::hashed_key_for(&dest);
+        let account_key_substrate = StorageKey(account_key);
+        let account_key_from_meta = client
+            .metadata()
+            .module("System")
+            .unwrap()
+            .storage("Account")
+            .unwrap()
+            .get_map::<AccountId, pallet_balances::AccountData<Balance>>()
+            .unwrap()
+            .key(dest.clone());
+        assert_eq!(account_key_substrate, account_key_from_meta);
     }
 }

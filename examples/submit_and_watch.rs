@@ -29,11 +29,8 @@ fn main() {
     let result: Result<ExtrinsicSuccess<_>, Box<dyn std::error::Error + 'static>> =
         async_std::task::block_on(async move {
             env_logger::init();
-
             let signer = AccountKeyring::Alice.pair();
-
             let dest = AccountKeyring::Bob.to_account_id();
-
             let cli = substrate_subxt::ClientBuilder::<Runtime>::new()
                 .build()
                 .await?;

@@ -208,8 +208,11 @@ impl StorageMetadata {
                 let module_prefix = self.module_prefix.as_bytes().to_vec();
                 let storage_prefix = self.storage_prefix.as_bytes().to_vec();
                 let hasher = hasher.to_owned();
-                let default = Decode::decode(&mut &self.default[..])
-                    .map_err(|_| MetadataError::MapValueTypeError)?;
+                let default = Decode::decode(&mut &self.default[..]).map_err(|err| {
+                    println!("{:?}", err);
+                    MetadataError::MapValueTypeError
+                })?;
+
                 Ok(StorageMap {
                     _marker: PhantomData,
                     module_prefix,

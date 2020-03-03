@@ -51,6 +51,8 @@ mod calls {
 /// events
 #[allow(unused)]
 pub mod events {
+    pub const TEST: &str = "Test";
+
     pub const REGISTERED: &str = "Registered";
     pub const DID_UPDATED: &str = "DidUpdated";
     pub const DID_REPLACED: &str = "DidReplaced";

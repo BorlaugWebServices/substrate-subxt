@@ -116,6 +116,8 @@ pub trait System: 'static + Eq + Clone + Debug {
     /// The address type. This instead of `<frame_system::Trait::Lookup as StaticLookup>::Source`.
     type Address: Codec + Clone + PartialEq + Debug;
 
+    // type Lookup = Indices;
+
     /// The block header.
     type Header: Parameter
         + Header<Number = Self::BlockNumber, Hash = Self::Hash>
@@ -139,7 +141,7 @@ pub struct AccountInfo<T: System> {
     pub nonce: T::Index,
     /// The number of other modules that currently depend on this account's existence. The account
     /// cannot be reaped until this is zero.
-    pub refcount: RefCount,
+    // pub refcount: RefCount,
     /// The additional data that belongs to this account. Used to store the balance(s) in a lot of
     /// chains.
     pub data: T::AccountData,
@@ -174,6 +176,7 @@ impl<T: System + Balances + Sync + Send + 'static, S: 'static> SystemStore
                 .storage("Account")?
                 .get_map()?)
         };
+        // println!("{:?}", self.metadata);
         let map = match account_map() {
             Ok(map) => map,
             Err(err) => return Box::pin(future::err(err)),

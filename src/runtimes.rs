@@ -19,6 +19,7 @@ use sp_runtime::{
     traits::{
         BlakeTwo256,
         IdentifyAccount,
+        StaticLookup,
         Verify,
     },
     MultiSignature,
@@ -54,7 +55,8 @@ impl System for DefaultNodeRuntime {
     type Address = pallet_indices::address::Address<Self::AccountId, u32>;
     type Header = Header<Self::BlockNumber, BlakeTwo256>;
     type Extrinsic = OpaqueExtrinsic;
-    type AccountData = AccountData<<Self as Balances>::Balance>;
+    type AccountData = AccountData<u128>;
+    // AccountData<<Self as Balances>::Balance>;
 }
 
 impl Balances for DefaultNodeRuntime {

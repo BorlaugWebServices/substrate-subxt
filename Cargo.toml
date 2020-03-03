@@ -19,13 +19,13 @@ num-traits = { version = "0.2", default-features = false }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 url = "1.7"
-codec = { package = "parity-scale-codec", version = "1.1", default-features = false, features = ["derive", "full"] }
+codec = { package = "parity-scale-codec", version = "1.2.0", default-features = false, features = ["derive", "full"] }
 
 frame-metadata = { git = "https://github.com/paritytech/substrate/", rev = "29454c30501ccf3a09fe82b965dd50e1a9e5aa24", package = "frame-metadata" }
 frame-support = { git = "https://github.com/paritytech/substrate/", rev = "29454c30501ccf3a09fe82b965dd50e1a9e5aa24", package = "frame-support" }
 sp-runtime = { git = "https://github.com/paritytech/substrate/", rev = "29454c30501ccf3a09fe82b965dd50e1a9e5aa24", package = "sp-runtime" }
 sp-version = { git = "https://github.com/paritytech/substrate/", rev = "29454c30501ccf3a09fe82b965dd50e1a9e5aa24", package = "sp-version" }
-pallet-indices = { git = "https://github.com/paritytech/substrate/", rev = "29454c30501ccf3a09fe82b965dd50e1a9e5aa24", package = "pallet-indices" }
+pallet_indices = { git = "https://github.com/paritytech/substrate/", rev = "29454c30501ccf3a09fe82b965dd50e1a9e5aa24", package = "pallet-indices" }
 hex = "0.4.0"
 sc-rpc-api = { git = "https://github.com/paritytech/substrate/", rev = "29454c30501ccf3a09fe82b965dd50e1a9e5aa24", package = "sc-rpc-api" }
 sp-rpc = { git = "https://github.com/paritytech/substrate/", rev = "29454c30501ccf3a09fe82b965dd50e1a9e5aa24", package = "sp-rpc" }
