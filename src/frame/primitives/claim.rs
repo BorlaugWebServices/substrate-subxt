@@ -1,7 +1,7 @@
 use super::{
-    Attestation,
-    Did,
-    Fact,
+    attestation::Attestation,
+    did::Did,
+    fact::Fact,
 };
 
 use codec::{

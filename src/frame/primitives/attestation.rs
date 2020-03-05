@@ -1,4 +1,4 @@
-use super::Did;
+use super::did::Did;
 
 use codec::{
     Decode,

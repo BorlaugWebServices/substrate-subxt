@@ -22,6 +22,7 @@ pub mod asset_registry;
 pub mod balances;
 pub mod contracts;
 pub mod identity;
+pub mod primitives;
 pub mod system;
 pub mod utils;
 

@@ -1,4 +1,4 @@
-use super::Fact;
+use super::fact::Fact;
 use codec::{
     Decode,
     Encode,

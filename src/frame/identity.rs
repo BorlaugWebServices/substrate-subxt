@@ -1,20 +1,15 @@
 //! Implements support for the identity module.
-pub mod attestation;
-pub mod claim;
-pub mod did;
-pub mod did_property;
-pub mod fact;
 
+use super::primitives::{
+    claim::Statement,
+    did::Did,
+    did_property::DidProperty,
+};
 use crate::frame::{
     system::System,
     Call,
 };
-use attestation::Attestation;
-use claim::Statement;
 use codec::Encode;
-use did::Did;
-use did_property::DidProperty;
-use fact::Fact;
 
 /// Module name
 pub const MODULE: &str = "Identity";
