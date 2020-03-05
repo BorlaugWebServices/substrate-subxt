@@ -19,7 +19,6 @@ use sp_runtime::{
     traits::{
         BlakeTwo256,
         IdentifyAccount,
-        StaticLookup,
         Verify,
     },
     MultiSignature,

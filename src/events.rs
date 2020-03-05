@@ -113,10 +113,12 @@ impl<T: System + Balances + 'static> TryFrom<Metadata> for EventsDecoder<T> {
         decoder.register_type_size::<u8>("VoteThreshold")?;
 
         // identity
-        decoder.register_type_size::<[u8; 32]>("CatalogId")?;
+        decoder.register_type_size::<u32>("CatalogId")?;
         decoder.register_type_size::<[u8; 32]>("H256")?;
         decoder.register_type_size::<[u8; 32]>("Did")?;
         decoder.register_type_size::<i64>("i64")?;
+        decoder.register_type_size::<u64>("Moment")?;
+        decoder.register_type_size::<u64>("ClaimIndex")?;
 
         Ok(decoder)
     }

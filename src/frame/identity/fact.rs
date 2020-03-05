@@ -35,7 +35,7 @@ pub enum Fact {
     /// 0 - 340282366920938463463374607431768211455
     U128(u128),
     /// (Year, Month, Day)
-    Date(u8, u8, u8),
+    Date(u16, u8, u8),
     /// (Year, Month, Day, Hour, Minute, Second, Time Zone Offset)
     Iso8601(u8, u8, u8, u8, u8, u8, Vec<u8>),
 }

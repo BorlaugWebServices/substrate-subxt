@@ -31,7 +31,7 @@ mod calls {
     pub const REGISTER_DID_FOR: &str = "register_did_for";
     pub const UPDATE_DID: &str = "update_did";
     pub const REPLACE_DID: &str = "replace_did";
-    pub const UPDATE_DID_CONTROLLERS: &str = "update_did_controllers";
+    pub const MANAGE_CONTROLLERS: &str = "manage_controllers";
 
     pub const AUTHORIZE_CLAIM_CONSUMERS: &str = "authorize_claim_consumers";
     pub const REVOKE_CLAIM_CONSUMERS: &str = "revoke_claim_consumers";
@@ -127,13 +127,10 @@ pub fn update_did(
 #[derive(Encode)]
 pub struct ReplaceDidArgs {
     did: Did,
-    properties: Option<Vec<DidProperty>>,
+    properties: Vec<DidProperty>,
 }
 
-pub fn replace_did(
-    did: Did,
-    properties: Option<Vec<DidProperty>>,
-) -> Call<ReplaceDidArgs> {
+pub fn replace_did(did: Did, properties: Vec<DidProperty>) -> Call<ReplaceDidArgs> {
     Call::new(
         MODULE,
         calls::REPLACE_DID,
@@ -141,21 +138,21 @@ pub fn replace_did(
     )
 }
 #[derive(Encode)]
-pub struct UpdateDidControllersArgs<T: Identity> {
+pub struct ManageControllersArgs<T: Identity> {
     did: Did,
     add: Option<Vec<<T as System>::AccountId>>,
     remove: Option<Vec<<T as System>::AccountId>>,
 }
 
-pub fn update_did_controllers<T: Identity>(
+pub fn manage_controllers<T: Identity>(
     did: Did,
     add: Option<Vec<<T as System>::AccountId>>,
     remove: Option<Vec<<T as System>::AccountId>>,
-) -> Call<UpdateDidControllersArgs<T>> {
+) -> Call<ManageControllersArgs<T>> {
     Call::new(
         MODULE,
-        calls::UPDATE_DID_CONTROLLERS,
-        UpdateDidControllersArgs { did, add, remove },
+        calls::MANAGE_CONTROLLERS,
+        ManageControllersArgs { did, add, remove },
     )
 }
 #[derive(Encode)]
