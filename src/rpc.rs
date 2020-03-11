@@ -96,9 +96,7 @@ where
     T: System,
 {
     pub async fn connect_ws(url: &str) -> Result<Self, Error> {
-        let transport = jsonrpsee::transport::ws::WsTransportClient::new(url)
-            .await
-            .unwrap();
+        let transport = jsonrpsee::transport::ws::WsTransportClient::new(url).await?;
         let raw_client = jsonrpsee::raw::RawClient::new(transport);
 
         // let raw_client = jsonrpsee::raw::RawClient::new(&url).await?;
@@ -353,6 +351,15 @@ impl<T: System + Balances + 'static> Rpc<T> {
                     }
                 }
                 TransactionStatus::Usurped(_) => return Err("Extrinsic Usurped".into()),
+                TransactionStatus::Retracted(_) => {
+                    return Err("Extrinsic Retracted".into())
+                }
+                TransactionStatus::FinalityTimeout(_) => {
+                    return Err("Extrinsic FinalityTimeout".into())
+                }
+                TransactionStatus::Finalized(_) => {
+                    return Err("Extrinsic Finalized".into())
+                }
                 TransactionStatus::Dropped => return Err("Extrinsic Dropped".into()),
                 TransactionStatus::Invalid => return Err("Extrinsic Invalid".into()),
             }
