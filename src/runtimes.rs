@@ -49,11 +49,12 @@ impl System for DefaultNodeRuntime {
     type Hash = sp_core::H256;
     type Hashing = BlakeTwo256;
     type AccountId = <<MultiSignature as Verify>::Signer as IdentifyAccount>::AccountId;
-    type Address = indices::address::Address<Self::AccountId, u32>;
+    // type Address = Self::AccountId;
+    type Address = pallet_indices::address::Address<Self::AccountId, u32>;
     type Header = Header<Self::BlockNumber, BlakeTwo256>;
     type Extrinsic = OpaqueExtrinsic;
-    type AccountData = AccountData<u128>;
-    // AccountData<<Self as Balances>::Balance>;
+    // type AccountData = AccountData<u128>;
+    type AccountData = AccountData<<Self as Balances>::Balance>;
 }
 
 impl Balances for DefaultNodeRuntime {

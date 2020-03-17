@@ -351,15 +351,15 @@ impl<T: System + Balances + 'static> Rpc<T> {
                     }
                 }
                 TransactionStatus::Usurped(_) => return Err("Extrinsic Usurped".into()),
-                TransactionStatus::Retracted(_) => {
-                    return Err("Extrinsic Retracted".into())
-                }
-                TransactionStatus::FinalityTimeout(_) => {
-                    return Err("Extrinsic FinalityTimeout".into())
-                }
-                TransactionStatus::Finalized(_) => {
-                    return Err("Extrinsic Finalized".into())
-                }
+                // TransactionStatus::Retracted(_) => {
+                //     return Err("Extrinsic Retracted".into())
+                // }
+                // TransactionStatus::FinalityTimeout(_) => {
+                //     return Err("Extrinsic FinalityTimeout".into())
+                // }
+                // TransactionStatus::Finalized(_) => {
+                //     return Err("Extrinsic Finalized".into())
+                // }
                 TransactionStatus::Dropped => return Err("Extrinsic Dropped".into()),
                 TransactionStatus::Invalid => return Err("Extrinsic Invalid".into()),
             }
