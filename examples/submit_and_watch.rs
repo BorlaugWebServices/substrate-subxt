@@ -18,8 +18,8 @@ use sp_keyring::AccountKeyring;
 use substrate_subxt::{
     balances,
     system::System,
-    DefaultNodeRuntime as Runtime,
     ExtrinsicSuccess,
+    KusamaRuntime as Runtime,
 };
 
 type AccountId = <Runtime as System>::AccountId;

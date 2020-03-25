@@ -21,22 +21,22 @@ serde_json = "1.0"
 url = "1.7"
 codec = { package = "parity-scale-codec", version = "1.2.0", default-features = false, features = ["derive", "full"] }
 
-frame-metadata ={ git = "https://github.com/paritytech/substrate.git", rev = '9e073ad23c0df3e59cb72313ecb866485994c233'}
-frame-support = { git = "https://github.com/paritytech/substrate.git", rev = '9e073ad23c0df3e59cb72313ecb866485994c233'}
-sp-runtime  = { git = "https://github.com/paritytech/substrate.git", rev = '9e073ad23c0df3e59cb72313ecb866485994c233'}
-sp-version = { git = "https://github.com/paritytech/substrate.git", rev = '9e073ad23c0df3e59cb72313ecb866485994c233'}
-indices = { package = "pallet-indices",git = "https://github.com/paritytech/substrate.git", rev = '9e073ad23c0df3e59cb72313ecb866485994c233'}
+frame-metadata ={ git = "https://github.com/paritytech/substrate.git", rev = 'd1b9ccad107e4899978858de5ddd2868b9777aab'}
+frame-support = { git = "https://github.com/paritytech/substrate.git", rev = 'd1b9ccad107e4899978858de5ddd2868b9777aab'}
+sp-runtime  = { git = "https://github.com/paritytech/substrate.git", rev = 'd1b9ccad107e4899978858de5ddd2868b9777aab'}
+sp-version = { git = "https://github.com/paritytech/substrate.git", rev = 'd1b9ccad107e4899978858de5ddd2868b9777aab'}
+indices = { package = "pallet-indices",git = "https://github.com/paritytech/substrate.git", rev = 'd1b9ccad107e4899978858de5ddd2868b9777aab'}
 hex = "0.4.0"
-sc-rpc-api = { git = "https://github.com/paritytech/substrate.git", rev = '9e073ad23c0df3e59cb72313ecb866485994c233'}
-sp-rpc =   { git = "https://github.com/paritytech/substrate.git", rev = '9e073ad23c0df3e59cb72313ecb866485994c233'}
+sc-rpc-api = { git = "https://github.com/paritytech/substrate.git", rev = 'd1b9ccad107e4899978858de5ddd2868b9777aab'}
+sp-rpc =   { git = "https://github.com/paritytech/substrate.git", rev = 'd1b9ccad107e4899978858de5ddd2868b9777aab'}
 
-sp-core = { git = "https://github.com/paritytech/substrate.git", rev = '9e073ad23c0df3e59cb72313ecb866485994c233'}
-sp-transaction-pool = { git = "https://github.com/paritytech/substrate.git", rev = '9e073ad23c0df3e59cb72313ecb866485994c233'}
+sp-core = { git = "https://github.com/paritytech/substrate.git", rev = 'd1b9ccad107e4899978858de5ddd2868b9777aab'}
+sp-transaction-pool = { git = "https://github.com/paritytech/substrate.git", rev = 'd1b9ccad107e4899978858de5ddd2868b9777aab'}
 
 [dev-dependencies]
 async-std = "1.2.0"
 env_logger = "0.7"
 wabt = "0.9"
-frame-system = { git = "https://github.com/paritytech/substrate.git", rev = '9e073ad23c0df3e59cb72313ecb866485994c233'}
-pallet-balances  = { git = "https://github.com/paritytech/substrate.git", rev = '9e073ad23c0df3e59cb72313ecb866485994c233'}
-sp-keyring  = { git = "https://github.com/paritytech/substrate.git", rev = '9e073ad23c0df3e59cb72313ecb866485994c233'}
+frame-system = { git = "https://github.com/paritytech/substrate.git", rev = 'd1b9ccad107e4899978858de5ddd2868b9777aab'}
+pallet-balances  = { git = "https://github.com/paritytech/substrate.git", rev = 'd1b9ccad107e4899978858de5ddd2868b9777aab'}
+sp-keyring  = { git = "https://github.com/paritytech/substrate.git", rev = 'd1b9ccad107e4899978858de5ddd2868b9777aab'}
