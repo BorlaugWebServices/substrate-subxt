@@ -14,7 +14,7 @@ include = ["Cargo.toml", "src/**/*.rs", "README.md", "LICENSE"]
 log = "0.4"
 thiserror = "1.0"
 futures = "0.3"
-jsonrpsee = { git = "https://github.com/paritytech/jsonrpsee/", features = ["ws"] ,rev = "a0bea41c4f37125fa742ec48b12e11cf55c592b5"}
+jsonrpsee = { git = "https://github.com/paritytech/jsonrpsee/", features = ["ws"] ,rev = "62da58d12321355aac76975bfedfbc3ab0fe08e3"}
 num-traits = { version = "0.2", default-features = false }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
@@ -22,10 +22,10 @@ url = "1.7"
 codec = { package = "parity-scale-codec", version = "1.2.0", default-features = false, features = ["derive", "full"] }
 
 frame-metadata = "11.0.0-alpha.5"
-frame-support = { version = "2.0.0-alpha.5", default-features = false }
+frame-support = "2.0.0-alpha.5"
 sp-runtime  = "2.0.0-alpha.5"
 sp-version = "2.0.0-alpha.5"
-indices = { package = "pallet-indices", version = "2.0.0-alpha.5", default-features = false }
+indices = { package = "pallet-indices", version = "2.0.0-alpha.5" }
 hex = "0.4.0"
 sc-rpc-api = "0.8.0-alpha.5"
 sp-rpc =   "2.0.0-alpha.5"
