@@ -121,6 +121,7 @@ impl<T: System + Balances + 'static> TryFrom<Metadata> for EventsDecoder<T> {
         decoder.register_type_size::<u64>("ClaimIndex")?;
         decoder.register_type_size::<u32>("RegistryId")?;
         decoder.register_type_size::<u32>("AssetId")?;
+        decoder.register_type_size::<u32>("LeaseId")?;
 
         Ok(decoder)
     }
